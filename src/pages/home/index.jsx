@@ -3,7 +3,9 @@ import { Layout } from '../../components'
 const Home = () => {
   return (
     <Layout>
-      <p>Home</p>
+      <div className='container mx-auto'>
+        <p className='text-xl'>Home</p>
+      </div>
     </Layout>
   )
 }
