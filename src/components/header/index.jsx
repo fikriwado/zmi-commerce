@@ -15,9 +15,9 @@ const Header = () => {
     <header className='container mx-auto'>
       <div className='flex items-stratch justify-between h-[80px]'>
         <div className='flex items-stratch'>
-          <div className='w-52 xl:w-60 max-w-full flex items-center'>
+          <Link to='/' className='w-52 xl:w-60 max-w-full flex items-center'>
             <img src={Logo} className='h-9 md:h-10 xl:h-auto' alt='logo' />
-          </div>
+          </Link>
           <nav className='ml-4 xl:ml-10 hidden lg:block'>
             <ul className='flex space-x-8 xl:space-x-10 h-full'>
               {menus.map((menu) => (
