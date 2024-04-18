@@ -6,8 +6,7 @@ export default {
       sm: '540px',
       md: '720px',
       lg: '960px',
-      xl: '1320px',
-      '2xl': '1536px'
+      xl: '1320px'
     },
     extend: {
       fontFamily: {
