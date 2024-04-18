@@ -1,7 +1,7 @@
 const Layout = ({ children }) => {
   return (
     <>
-      Header
+      <h1 className='text-3xl font-bold underline'>Header</h1>
       {children}
     </>
   )
