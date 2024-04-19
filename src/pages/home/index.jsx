@@ -57,7 +57,7 @@ const Home = () => {
                   </Link>
                   <p className='text-gray-700 text-base'>{product.price}</p>
                 </div>
-                <div className='px-4 pb-4 flex items-end'>
+                <div className='px-4 pb-4'>
                   <Link
                     to='/'
                     className='inline-block bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded'
