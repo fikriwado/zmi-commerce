@@ -12,22 +12,38 @@ const saveCartToStorage = (cart) => {
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    products: loadCartFromStorage()
+    carts: loadCartFromStorage()
   },
   reducers: {
     addToCart: (state, action) => {
-      const isItemInCart = state.products.find(
-        (product) => product.id === action.payload.id
-      )
-      if (isItemInCart) {
-        isItemInCart.quantity++
+      const cartItem = state.carts.find((item) => item.id === action.payload.id)
+      if (cartItem) {
+        cartItem.quantity++
       } else {
-        state.products.push(action.payload)
+        state.carts.push(action.payload)
       }
-      saveCartToStorage(state.products)
+      saveCartToStorage(state.carts)
+    },
+    increment: (state, action) => {
+      const cartItem = state.carts.find((item) => item.id === action.payload.id)
+      if (cartItem) {
+        cartItem.quantity++
+        saveCartToStorage(state.carts)
+      }
+    },
+    decrement: (state, action) => {
+      const cartItem = state.carts.find((item) => item.id === action.payload.id)
+      if (cartItem && cartItem.quantity > 1) {
+        cartItem.quantity--
+        saveCartToStorage(state.carts)
+      }
+    },
+    removeItem: (state, action) => {
+      state.carts = state.carts.filter((item) => item.id !== action.payload.id)
+      saveCartToStorage(state.carts)
     }
   }
 })
 
-export const { addToCart } = cartSlice.actions
+export const { addToCart, increment, decrement, removeItem } = cartSlice.actions
 export default cartSlice.reducer

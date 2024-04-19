@@ -1,14 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Layout } from '../../components'
-import { stringToSlug } from '../../utils/helper'
-import { addToCart } from '../../redux/slices/cartSlice'
+import { Layout, ProductCard } from '../../components'
 
 const Home = () => {
   const [products, setProducts] = useState([])
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,42 +30,7 @@ const Home = () => {
         <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
           {products.length > 0 ? (
             products.map((product) => (
-              <div
-                key={product.id}
-                className='bg-white border border-gray-200 rounded-lg'
-              >
-                <div className='bg-gray-50 h-64 overflow-hidden'>
-                  <Link
-                    to={`/product/${stringToSlug(product.title)}`}
-                    state={{ id: product.id }}
-                  >
-                    <img
-                      src={product.image}
-                      alt='product'
-                      className='object-contain w-full h-full p-5'
-                    />
-                  </Link>
-                </div>
-                <div className='p-4 space-y-2'>
-                  <Link
-                    to='/'
-                    className='text-gray-900 font-bold text-lg overflow-hidden line-clamp-2'
-                  >
-                    {product.title}
-                  </Link>
-                  <p className='text-gray-700 text-base'>{product.price}</p>
-                </div>
-                <div className='px-4 pb-4'>
-                  <button
-                    className='inline-block bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded'
-                    onClick={() =>
-                      dispatch(addToCart({ ...product, quantity: 1 }))
-                    }
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))
           ) : (
             <div className='text-center'>Loading...</div>
