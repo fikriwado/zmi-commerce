@@ -4,7 +4,7 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Cart, Checkout, Home, ProductDetail } from './pages'
+import { Cart, Checkout, Home, ProductDetail, Payment } from './pages'
 
 const routes = [
   {
@@ -22,6 +22,10 @@ const routes = [
   {
     path: '/checkout',
     element: <Checkout />
+  },
+  {
+    path: '/payment',
+    element: <Payment />
   }
 ]
 

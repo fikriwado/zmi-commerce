@@ -16,7 +16,7 @@ const Checkout = () => {
 
   useEffect(() => {
     const hasShippingAddress = shippingAddress != ''
-    const hasPaymentMethod = shippingAddress != ''
+    const hasPaymentMethod = paymentMethod != ''
     if (hasShippingAddress && hasPaymentMethod) setIsDisabled(false)
     else setIsDisabled(true)
   }, [shippingAddress, paymentMethod])
@@ -70,7 +70,7 @@ const Checkout = () => {
             <div>
               <p className='text-lg font-medium mb-3'>Payment Method</p>
 
-              <div className='w-1/4 space-y-3'>
+              <div className='w-full lg:w-1/2 xl:w-1/3 space-y-3'>
                 {payments.length > 0 &&
                   payments.map((payment) => (
                     <label
@@ -101,7 +101,7 @@ const Checkout = () => {
 
               <div className='mt-5'>
                 <Link
-                  to='/'
+                  to='/payment'
                   onClick={handleCompletePurchase}
                   className={clsx(
                     'inline-block text-white px-4 py-2 rounded',

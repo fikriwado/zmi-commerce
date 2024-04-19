@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
         >
           {product.title}
         </Link>
-        <p className='text-green-600 text-base'>${product.price}</p>
+        <p className='text-green-600'>${product.price}</p>
       </div>
       <div className='px-4 pb-4'>
         <button
