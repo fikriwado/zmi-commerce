@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Layout } from '../../components'
+import { stringToSlug } from '../../utils/helper'
 
 const Home = () => {
   const [products, setProducts] = useState([])
@@ -36,7 +37,10 @@ const Home = () => {
                 className='bg-white border border-gray-200 rounded-lg'
               >
                 <div className='bg-gray-50 h-64 overflow-hidden'>
-                  <Link to='/'>
+                  <Link
+                    to={`/product/${stringToSlug(product.title)}`}
+                    state={{ id: product.id }}
+                  >
                     <img
                       src={product.image}
                       alt='product'

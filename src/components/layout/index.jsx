@@ -1,11 +1,10 @@
-import { Header, Footer } from '../index'
+import { Header } from '../index'
 
 const Layout = ({ children }) => {
   return (
     <>
       <Header />
       {children}
-      <Footer />
     </>
   )
 }
