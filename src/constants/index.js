@@ -1,3 +1,5 @@
+import { mastercard, paypal, visa } from '../assets'
+
 const menus = [
   {
     id: 'promo',
@@ -21,4 +23,15 @@ const menus = [
   }
 ]
 
-export { menus }
+const payments = [
+  {
+    id: 'mastercard',
+    label: 'Mastercard',
+    number: '..1234',
+    image: mastercard
+  },
+  { id: 'visa', label: 'Visa', number: '..5678', image: visa },
+  { id: 'paypal', label: 'Paypal', number: '..9123', image: paypal }
+]
+
+export { menus, payments }
