@@ -1,12 +1,15 @@
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { Layout } from '../../components'
 import { useEffect, useState } from 'react'
+import { addToCart } from '../../redux/slices/cartSlice'
 
 const ProductDetail = () => {
   const [product, setProduct] = useState([])
   const location = useLocation()
   const { id } = location.state
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -15,7 +18,6 @@ const ProductDetail = () => {
           `https://fakestoreapi.com/products/${id}`
         )
         setProduct(response.data)
-        console.log(response.data)
       } catch (error) {
         console.error('Error fetching product:', error)
       }
@@ -53,12 +55,22 @@ const ProductDetail = () => {
               <p className='text-xl font-semibold text-green-600 mb-4'>
                 ${product.price}
               </p>
-              <Link
-                to='/'
-                className='inline-block bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded'
-              >
-                Add to cart
-              </Link>
+              <div className='space-x-8'>
+                <button
+                  className='inline-block bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded'
+                  onClick={() =>
+                    dispatch(addToCart({ ...product, quantity: 1 }))
+                  }
+                >
+                  Add to cart
+                </button>
+                <Link
+                  to='/cart'
+                  className='inline-block font-medium text-slate-800'
+                >
+                  Go to cart
+                </Link>
+              </div>
             </div>
           </div>
         </section>

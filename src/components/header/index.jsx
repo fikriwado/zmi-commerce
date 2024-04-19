@@ -30,6 +30,10 @@ const Header = () => {
     }
   }, [])
 
+  useEffect(() => {
+    console.log('from header', products)
+  }, [products])
+
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
@@ -65,7 +69,7 @@ const Header = () => {
             </nav>
           </div>
           <div className='flex items-center space-x-5 md:space-x-7 lg:space-x-10'>
-            <Link to='/' className='relative'>
+            <Link to='/cart' className='relative'>
               <div className='absolute -top-2.5 -right-2.5 flex items-center justify-center w-5 h-5 bg-emerald-600 text-white rounded-full text-xs font-semibold'>
                 {products.length}
               </div>
